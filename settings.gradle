@@ -1,0 +1,2 @@
+include ':app', ':gradleplugin'
+println '初始化阶段开始执行'

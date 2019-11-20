@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion build_version.compileSdkVersion
+    buildToolsVersion build_version.buildToolsVersion
+    defaultConfig {
+        applicationId "com.wanandroid.zhangtianzhu.kotlinproject"
+        minSdkVersion build_version.minSdkVersion
+        targetSdkVersion build_version.targetSdkVersion
+        versionCode build_version.versionCode
+        versionName build_version.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main{
+            jniLibs.srcDirs = ['libs']//修改so库存放位置
+        }
+    }
+
+    sourceSets {
+        main{
+            res.srcDirs = ['src/main/res','src/main/res-add','src/main/res-player']//设置资源文件夹的路径为这三个
+        }
+    }
+}
+
+//sourceSets也可以在android包外进行定义
+this.android.sourceSets{
+    main{
+        res.srcDirs = ['src/main/res','src/main/res-add','src/main/res-player']//设置资源文件夹的路径为这三个
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation supportDeps.appcompat
+    implementation supportDeps.core_ktx
+    implementation supportDeps.constraintlayout
+    implementation supportDeps.cardview
+    implementation supportDeps.design
+    implementation supportDeps.recyclerview
+    implementation supportDeps.support_v4
+    implementation commonDeps.coroutines
+    implementation commonDeps.anko
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation testDeps.junit
+    androidTestImplementation testDeps.runner
+    androidTestImplementation testDeps.expresso_core
+}
+
+this.getParentProject()
+/**
+ * 获取父project 如果当前project没有父project就会报错显示null,该输出在配置阶段完成之后进行
+ * @return
+ */
+def getParentProject() {
+    def name = this.getParent().name
+    println "the parent project name is $name"
+}

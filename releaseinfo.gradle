@@ -1,0 +1,83 @@
+import groovy.xml.MarkupBuilder
+
+ext {
+    versionName = this.build_version.versionName
+    versionCode = this.build_version.versionCode
+    versionInfo = '第一个版本上线，一些基础模块功能'
+}
+
+this.afterEvaluate { Project project ->
+    def buildTask = project.tasks.getByName('build')
+    if (buildTask == null) {
+        throw GradleException('the build task is not found')
+    }
+
+    buildTask.doLast {
+        writeTask.execute()
+    }
+}
+
+task writeTask {
+    //task 指定输入
+    inputs.property('versionName'.this.versioName)
+    inputs.property('versionCode', this.versionCode)
+    inputs.property('versionInfo', this.versionInfo)
+    //为task 指定输出
+    outputs.file destFile
+    doLast {
+        def data = inputs.getProperties
+        def file = outputs.getFiles.getSingleFile
+        def versionMsg = new VersionMsg(data)
+        def sw = new StringWriter()
+        def xmlBuilder = new MarkupBuilder(sw)
+        if (file != null && file.size() <= 0) {
+            xmlBuilder.releases {
+                release ->
+                    versionName(versionMsg.versionName)
+                    versionCode(versionMsg.versionCode)
+                    versionInfo(versionMsg.versionInfo)
+            }
+            file.withWriter { writer -> writer.append(sw.toString()) }
+        } else {
+            release {
+                versionName(versionMsg.versionName)
+                versionCode(versionMsg.versionCode)
+                versionInfo(versionMsg.versionInfo)
+            }
+            def lines = file.readLines()
+            def lengths = lines.size() - 1
+            file.withWriter { writer ->
+                lines.eachWithIndex { String line, int index ->
+                    if (index != lenghts) {
+                        writer.append(line + '\r\n')
+                    } else if (index == lenghts) {
+                        writer.append('\r\r\n' + sw.toString() + '\r\n')
+                        writer.append(lines.get(lengths))
+                    }
+                }
+            }
+        }
+    }
+}
+
+task readTask {
+    //指定输出文件为上一个task输入
+    inputs.file destFile
+    doLast {
+        def file = inputs.files.singleFile
+        println file.text()
+    }
+}
+
+task taskTest {
+    dependsOn readTask, writeTask
+    doLast {
+        println '输出完成'
+    }
+}
+
+class VersionMsg {
+    String versionName
+    String versionCode
+    String versionInfo
+}

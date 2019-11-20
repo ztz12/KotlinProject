@@ -1,0 +1,314 @@
+ext {
+    build_version = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            minSdkVersion    : 19,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    version = [
+            appcompat       : '1.1.0',
+            core_ktx        : '1.1.0',
+            constraintlayout: '1.1.3',
+            cardview        : '1.0.0',
+            recyclerview    : '1.0.0',
+            junit           : '4.12',
+            runner          : '1.2.0',
+            expresso        : '3.2.0'
+    ]
+
+    supportDeps = [
+            appcompat       : [group: 'androidx.appcompat', name: 'appcompat', version: version.appcompat],
+            core_ktx        : [group: 'androidx.core', name: 'core-ktx', version: version.core_ktx],
+            constraintlayout: [group: 'androidx.constraintlayout', name: 'constraintlayout', version: version.constraintlayout],
+            cardview        : [group: 'androidx.cardview', name: 'cardview', version: version.cardview],
+            design          : [group: 'com.google.android.material', name: 'material', version: '1.0.0-rc01'],
+            recyclerview    : [group: 'androidx.recyclerview', name: 'recyclerview', version: version.recyclerview],
+            support_v4      : [group: 'androidx.legacy', name: 'legacy-support-v4', version: '1.0.0']
+    ]
+
+    testDeps = [
+            "junit"        : [group: 'junit', name: 'junit', version: version.junit],
+            "runner"       : [group: 'androidx.test', name: 'runner', version: version.runner],
+            "expresso_core": [group: 'androidx.test.espresso', name: 'espresso-core', version: version.expresso]
+    ]
+
+    commonDeps = [
+            "coroutines": [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.1.0-alpha'],
+            "anko"      : [group: 'org.jetbrains.anko', name: 'anko', version: '0.10.7']
+    ]
+
+}
+/**
+ * 配置阶段开始前的监听回调
+ */
+this.beforeEvaluate {}
+/**
+ * 配置阶段完成以后的监听回调
+ */
+this.afterEvaluate {
+    println '配置阶段执行完毕'
+}
+/**
+ * gradle 执行完毕的回调监听
+ */
+this.gradle.buildFinished {
+    println '执行阶段执行完毕'
+}
+
+/**
+ * Project 相关api
+ * 执行在配置阶段
+ */
+this.getProjects()
+//this.getParentProject()
+def getProjects(){
+    println '------'
+    println 'Root Project'
+    println '------'
+
+    //输出根project与其他project
+    this.getAllprojects().eachWithIndex{ Project project, int index->
+        if(index==0){
+            println "Root Project = ${project.name}"
+        }else {
+            println "+-- project = ${project.name}"
+        }
+    }
+
+    println 'Sub Project'
+    //获取当前project的所有子project
+    this.getSubprojects().eachWithIndex{ Project project, int i ->
+        println "+-- project = ${project.name}"
+    }
+}
+
+/**
+ * 获取父project 如果当前project没有父project就会报错显示null
+ * @return
+ */
+def getParentProject(){
+    def name = this.getParent().name
+    println "the parent project name is $name"
+}
+/**
+ * 也是获取根project ，不过当前方法可以在任意地方使用，即使当前project之上已经没有根project
+ * Project 是以树的形式，而树一定会有根节点，而parent已经是树节点就没有根节点
+ */
+this.getRootPro()
+def getRootPro(){
+    def name = this.getRootProject().name
+    println "the root project name is $name"
+}
+
+/**
+ * 这是一个project，也就是内部方法都可以调用
+ */
+project('app'){Project project->
+//    println "the name is ${project.name}"
+    apply plugin: 'com.android.application'
+    dependencies {
+
+    }
+    android{
+
+    }
+}
+
+/**
+ * 对所有的工程进行配置，当前根project与它以下子project
+ */
+allprojects {
+    group 'com.yif'
+    version '1.0.0-alpha'
+}
+
+println project('app').group
+
+/**
+ * 不包括当前根工程，只包括子工程，添加公共配置
+ */
+subprojects {Project project ->
+    //判断当前工程是否是子工程，从而引入外部的maven功能
+    if(project.plugins.hasPlugin('com.android.library')){
+        apply from:'../publishToMavean.gradle'
+    }
+}
+
+//task apkcopy{
+//    doLast{
+//        def sourcePath = this.buildDir.path + '/outputs/apk'
+//        def destinationPath = '/Users/zhangtianzhu/Downloads/'
+//        def command = "mv -f ${sourcePath} ${destinationPath}"
+//        exec {
+//            try{
+//                executable 'bash'
+//                args '-c',command
+//                println 'the command is execute success'
+//            }catch(GradleException e){
+//                println 'the command is execute failed'
+//            }
+//        }
+//    }
+//}
+
+task hellotask(group: 'immoc',description:'tasktest'){
+    println 'hello task'
+}
+
+this.tasks.create('hellotask2'){
+    setGroup('immoc')
+    setDescription('tasktest')
+    println 'hello task two'
+}
+
+/**
+ * 在执行阶段执行
+ */
+task tasktest(group: 'immoc',description: 'tasktest'){
+    doFirst{
+        println "the task group is $group"
+    }
+}
+
+tasktest.doFirst{
+    println "the task description is $description"
+}
+
+//计算build 时长
+//def startTime,endTime
+//this.afterEvaluate {Project project->
+//    def preBuild = project.tasks.getByName('preBuild')
+//    preBuild.doFirst {
+//        startTime = System.currentTimeMillis()
+//        println "the startTime is $startTime"
+//    }
+//
+//    def build = project.tasks.getByName('build')
+//    build.doLast {
+//        endTime = System.currentTimeMillis()
+//        println "the build time is ${endTime - startTime}"
+//    }
+//}
+
+def returnresult = { String a -> return  "hello $a"}
+def cosule = returnresult('cxv')
+println cosule
+
+/**
+ * Task 依赖dependOn
+ */
+task taskX{
+    doLast{
+        println 'taskX'
+    }
+}
+
+task taskY{
+    doLast{
+        println 'taskY'
+    }
+}
+
+task lib1 {
+    doLast {
+        println 'lib1'
+    }
+}
+
+task lib2  {
+    doLast {
+        println 'lib2'
+    }
+}
+
+task noLib {
+    doLast {
+        println 'noLib'
+    }
+}
+
+//taskZ 依赖于X与Y，那么他们将会优先于Z进行输出，并且输出它所依赖的task，X与Y是随机顺序执行，由于没有定义依赖关系
+task taskZ{
+    //task依赖于所有以lib为开头的库 动态添加依赖
+    dependsOn this.tasks.findAll {task ->
+        //这里匹配以lib开头的库必须使用startsWithAny ，使用startsWith无法匹配到
+        return task.name.startsWithAny('lib')
+    }
+    doLast{
+        println 'taskZ'
+    }
+}
+//或者通过调用task的dependsOn方法进行依赖 静态添加依赖
+//taskZ.dependsOn(taskX,taskY)
+
+/**
+ * 依赖实战
+ */
+//task handleReleaseTaskFile{
+//    def srcFile = file('releases.xml')
+//    def destinationFile = new File(this.buildDir,'generated/release/')
+//    doLast{
+//        println '开始解析xml文件'
+//        destinationFile.mkdir()
+//        def releaseFile = new XmlParser().parse(srcFile)
+//        releaseFile.release.each{releaseNode->
+//            //解析每个节点的内容
+//            def name = releaseNode.versionName.text()
+//            def versionCode = releaseNode.versionCode.text()
+//            def versionInfo = releaseNode.versionInfo.text()
+//            //创建文件并写入节点数据
+//            def destFile = new File(destinationFile,"release-${name}.text")
+//            destFile.withWriter {writer->
+//                writer.write("$name -> $versionCode -> $versionInfo")
+//            }
+//        }
+//    }
+//}
+//
+////自定义一个测试依赖于handleReleaseTaskFile
+//task handleReleaseFileTest(dependsOn:handleReleasTaskFile){
+//    def dir = fileTree(this.buildDir + 'generated/release/')
+//    doLast{
+//        dir.each {
+//            println "the file name is："+it
+//        }
+//        println '输出完成'
+//    }
+//}
+
+/**
+ * 执行顺序
+ */
+task X1{
+    doLast{
+        println 'taskX1'
+    }
+}
+
+task Y1{
+    mustRunAfter X1
+    doLast{
+        println 'taskY1'
+    }
+}
+
+task Z1{
+    mustRunAfter Y1
+    doLast{
+        println 'taskZ1'
+    }
+}
+
+/**
+ * 为自定义插件进行传递参数
+ */
+//releaseInfo{
+//    versionName =  build_version.versionName
+//    versionCode =  build_version.versionCode
+//    versionInfo = '第一个版本'
+//    fileName = 'releases.xml'
+//}
+

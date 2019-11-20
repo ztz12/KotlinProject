@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.ConstraintLayoutActivity">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/tv1"
+              android:text="TextView1"
+              android:textSize="16sp"
+              app:layout_constraintLeft_toLeftOf="parent"
+              app:layout_constraintRight_toRightOf="parent"/>
+
+    <!--layout_constraintLeft_toRightOf 将tv2的左边约束到tv4的右边，
+    使用layout_constraintBaseline_toBaselineOf让原来高度不相同的文本能够并排对齐显示-->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="TextView2"
+              android:textSize="16sp"
+              app:layout_constraintLeft_toRightOf="@id/tv4"
+              app:layout_constraintTop_toTopOf="parent"
+              android:layout_marginTop="100dp"
+              app:layout_constraintBaseline_toBaselineOf="@id/tv4"
+              android:background="@color/colorAccent"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="TextView3"
+              android:textSize="16sp"
+              app:layout_constraintTop_toBottomOf="@id/tv1"/>
+    <!--使用marginTop 必须约束在父布局的位置，必须使用对应的layout_constraintTop_toTopOf-->
+    <TextView android:layout_width="wrap_content" android:layout_height="50dp"
+              android:text="TextView4"
+              android:textSize="16sp"
+              android:background="@color/colorAccent"
+              android:gravity="center"
+              android:layout_marginTop="100dp"
+              android:id="@+id/tv4"
+              app:layout_constraintTop_toTopOf="parent"/>
+
+    <!--角度定位-->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:background="@color/colorAccent"
+              android:textSize="16sp"
+              android:text="TextView5"
+              app:layout_constraintCircle="@id/tv1"
+              app:layout_constraintCircleAngle="120"
+              app:layout_constraintCircleRadius="150dp"/>
+
+    <!--goneMargin 设置当前依赖的控件不可见时，显示距离-->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="TextView6"
+              android:textSize="16sp"
+              android:background="@color/colorAccent"
+              app:layout_constraintLeft_toRightOf="@id/tv1"
+              app:layout_goneMarginLeft="10dp"/>
+
+    <!--至少有个尺寸设置0dp，也就是match_parent，再通过layout_constraintDimensionRatio设置宽高比-->
+    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+              app:layout_constraintTop_toTopOf="parent"
+              android:layout_marginTop="200dp"
+              android:background="@color/colorAccent"
+              android:textSize="16sp"
+              android:text="TextView7"
+              android:gravity="center"
+              app:layout_constraintDimensionRatio="1:1"/>
+
+    <!--链 使用layout_constraintHorizontal_chainStyle在链头设置，也就是第一个控件-->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:background="@color/colorAccent"
+              android:text="TextView8"
+              android:textSize="16sp"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintLeft_toLeftOf="parent"
+              android:layout_marginTop="350dp"
+              android:id="@+id/tv8"
+              app:layout_constraintRight_toLeftOf="@id/tv9"
+              app:layout_constraintHorizontal_chainStyle="packed"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:background="@color/colorAccent"
+              android:text="TextView9"
+              android:textSize="16sp"
+              android:id="@+id/tv9"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              android:layout_marginTop="350dp"
+              app:layout_constraintLeft_toRightOf="@id/tv8"
+              app:layout_constraintRight_toLeftOf="@id/tv10"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:background="@color/colorAccent"
+              android:text="TextView10"
+              android:textSize="16sp"
+              android:id="@+id/tv10"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintRight_toRightOf="parent"
+              android:layout_marginTop="350dp"
+              app:layout_constraintLeft_toRightOf="@id/tv9"/>
+
+    <!--使用Group来将多个控件设置一组，方便显示与隐藏控件-->
+    <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:visibility="invisible"
+
+            app:constraint_referenced_ids="tv8,tv10"/>
+
+    <!--使用placeholder占位符，并使用setContent来设置控件id，让这个控件移动到占位符位置-->
+    <androidx.constraintlayout.widget.Placeholder android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  app:layout_constraintTop_toTopOf="parent"
+                                                  app:layout_constraintLeft_toLeftOf="parent"
+                                                  android:layout_marginTop="400dp"
+                                                  app:content="@id/tv9"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
