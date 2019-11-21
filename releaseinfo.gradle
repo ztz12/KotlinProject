@@ -3,7 +3,7 @@ import groovy.xml.MarkupBuilder
 ext {
     versionName = this.build_version.versionName
     versionCode = this.build_version.versionCode
-    versionInfo = '第N个版本上线，一些不同模块功能'
+    versionInfo = '第N个版本上线，一些重要的模块功能'
     destFile = file('releases.xml')
     if (destFile != null && !destFile.exists()) {
         destFile.createNewFile()
@@ -36,14 +36,15 @@ task writeTask {
         def xmlBuilder = new MarkupBuilder(sw)
         if (file != null && file.size() <= 0) {
             xmlBuilder.releases {
-                release ->
+                release {
                     versionName(versionMsg.versionName)
                     versionCode(versionMsg.versionCode)
                     versionInfo(versionMsg.versionInfo)
+                }
             }
             file.withWriter { writer -> writer.append(sw.toString()) }
         } else {
-            xmlBuilder.releases {
+            xmlBuilder.release {
                 versionName(versionMsg.versionName)
                 versionCode(versionMsg.versionCode)
                 versionInfo(versionMsg.versionInfo)
@@ -55,8 +56,8 @@ task writeTask {
                     if (index != lengths) {
                         writer.append(line + '\r\n')
                     } else if (index == lengths) {
-                        writer.append(lines.get(lengths))
                         writer.append('\r\r\n' + sw.toString() + '\r\n')
+                        writer.append(lines.get(lengths))
                     }
                 }
             }
