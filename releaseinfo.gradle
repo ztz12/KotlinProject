@@ -3,7 +3,11 @@ import groovy.xml.MarkupBuilder
 ext {
     versionName = this.build_version.versionName
     versionCode = this.build_version.versionCode
-    versionInfo = '第一个版本上线，一些基础模块功能'
+    versionInfo = '第一个版本上线，一些重要模块功能'
+    destFile = file('releases.xml')
+    if(destFile!=null&&!destFile.exists()){
+        destFile.createNewFile()
+    }
 }
 
 this.afterEvaluate { Project project ->
@@ -19,14 +23,14 @@ this.afterEvaluate { Project project ->
 
 task writeTask {
     //task 指定输入
-    inputs.property('versionName'.this.versioName)
+    inputs.property('versionName', this.versionName)
     inputs.property('versionCode', this.versionCode)
     inputs.property('versionInfo', this.versionInfo)
     //为task 指定输出
     outputs.file destFile
     doLast {
-        def data = inputs.getProperties
-        def file = outputs.getFiles.getSingleFile
+        def data = inputs.getProperties()
+        def file = outputs.getFiles().getSingleFile()
         def versionMsg = new VersionMsg(data)
         def sw = new StringWriter()
         def xmlBuilder = new MarkupBuilder(sw)
@@ -39,7 +43,7 @@ task writeTask {
             }
             file.withWriter { writer -> writer.append(sw.toString()) }
         } else {
-            release {
+            xmlBuilder.release {
                 versionName(versionMsg.versionName)
                 versionCode(versionMsg.versionCode)
                 versionInfo(versionMsg.versionInfo)
@@ -48,9 +52,9 @@ task writeTask {
             def lengths = lines.size() - 1
             file.withWriter { writer ->
                 lines.eachWithIndex { String line, int index ->
-                    if (index != lenghts) {
+                    if (index != lengths) {
                         writer.append(line + '\r\n')
-                    } else if (index == lenghts) {
+                    } else if (index == lengths) {
                         writer.append('\r\r\n' + sw.toString() + '\r\n')
                         writer.append(lines.get(lengths))
                     }
@@ -65,7 +69,7 @@ task readTask {
     inputs.file destFile
     doLast {
         def file = inputs.files.singleFile
-        println file.text()
+        println file.text
     }
 }
 

@@ -39,7 +39,7 @@ class ReleaseInfoTask{
             }
             file.withWriter { writer -> writer.append(sw.toString()) }
         } else {
-            release {
+            xmlBuilder.release {
                 versionName(versionMsg.versionName)
                 versionCode(versionMsg.versionCode)
                 versionInfo(versionMsg.versionInfo)
@@ -48,9 +48,9 @@ class ReleaseInfoTask{
             def lengths = lines.size() - 1
             file.withWriter { writer ->
                 lines.eachWithIndex { String line, int index ->
-                    if (index != lenghts) {
+                    if (index != lengths) {
                         writer.append(line + '\r\n')
-                    } else if (index == lenghts) {
+                    } else if (index == lengths) {
                         writer.append('\r\r\n' + sw.toString() + '\r\n')
                         writer.append(lines.get(lengths))
                     }

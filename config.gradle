@@ -194,7 +194,7 @@ tasktest.doFirst{
 //}
 
 def returnresult = { String a -> return  "hello $a"}
-def cosule = returnresult('cxv')
+def cosule = returnresult('yif')
 println cosule
 
 /**

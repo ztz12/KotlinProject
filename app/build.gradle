@@ -6,6 +6,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply from: this.rootProject.file('releaseinfo.gradle')
+
 android {
     compileSdkVersion build_version.compileSdkVersion
     buildToolsVersion build_version.buildToolsVersion
@@ -72,4 +74,124 @@ this.getParentProject()
 def getParentProject() {
     def name = this.getParent().name
     println "the parent project name is $name"
+}
+
+/** 以下开始是将Android Library上传到JCenter的相关配置**/
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+//项目主页
+def siteUrl = 'https://github.com/ztz12/KotlinProject'
+//项目的版本控制地址
+def gitUrl = 'https://github.com/ztz12/KotlinProject.git'
+
+//发布到组织名称名字，必须填写
+group = "com.wanandroid.zhangtianzhu.kotlinproject"
+//发布到JCenter上的项目名字，必须填写
+def libName = "groovyStudy"
+// 版本号，下次更新是只需要更改版本号即可
+version = "0.0.1"
+/**  上面配置后上传至JCenter后的编译路径是这样的： compile 'group:libName:version'  **/
+
+//生成源文件
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+//生成文档
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+    options.author true
+    options.version true
+    options.links "http://docs.oracle.com/javase/7/docs/api"
+    failOnError false
+}
+
+//文档打包成jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+//拷贝javadoc文件
+task copyDoc(type: Copy) {
+    from "${buildDir}/docs/"
+    into "docs"
+}
+
+//上传到jCenter所需要的源码文件
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// 配置maven库，生成POM.xml文件
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'groovyStudy'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'Yif'
+                        name 'Yif'
+                        email 'ztz123qwe@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+//上传到JCenter
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+    configurations = ['archives']
+    pkg {
+        repo = 'germany/Kotlin'
+        name = libName    //发布到JCenter上的项目名字，必须填写
+        desc = "Groovy study"    //项目描述
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+        publicDownloadNumbers = true
+    }
+}
+
+/**
+ * Android 对gradle进行扩展
+ */
+task doVarianits {
+    doLast {
+        //获取应用变体的属性
+        this.android.applicationVariants.all { variants ->
+            def name = variants.name
+            def baseName = variants.baseName
+            println "the name is ${name}," + "the baseName is ${baseName}"
+            //将不同变体进行区分
+            def task = variants.getCheckManifestProvider()
+            println task.name
+        }
+    }
 }
