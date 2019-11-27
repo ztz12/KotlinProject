@@ -27,22 +27,22 @@ android {
     }
 
     sourceSets {
-        main{
+        main {
             jniLibs.srcDirs = ['libs']//修改so库存放位置
         }
     }
 
     sourceSets {
-        main{
-            res.srcDirs = ['src/main/res','src/main/res-add','src/main/res-player']//设置资源文件夹的路径为这三个
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res-add', 'src/main/res-player']//设置资源文件夹的路径为这三个
         }
     }
 }
 
 //sourceSets也可以在android包外进行定义
-this.android.sourceSets{
-    main{
-        res.srcDirs = ['src/main/res','src/main/res-add','src/main/res-player']//设置资源文件夹的路径为这三个
+this.android.sourceSets {
+    main {
+        res.srcDirs = ['src/main/res', 'src/main/res-add', 'src/main/res-player']//设置资源文件夹的路径为这三个
     }
 }
 

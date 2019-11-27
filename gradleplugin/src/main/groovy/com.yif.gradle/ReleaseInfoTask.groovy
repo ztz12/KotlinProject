@@ -32,10 +32,11 @@ class ReleaseInfoTask{
         def xmlBuilder = new MarkupBuilder(sw)
         if (file != null && file.size() <= 0) {
             xmlBuilder.releases {
-                release ->
+                release {
                     versionName(versionMsg.versionName)
                     versionCode(versionMsg.versionCode)
                     versionInfo(versionMsg.versionInfo)
+                }
             }
             file.withWriter { writer -> writer.append(sw.toString()) }
         } else {
