@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+                android:duration="2000"
+                android:propertyName="TranslationX"
+                android:valueType="floatType"
+                android:valueFrom="100"
+                android:valueTo="400"
+                android:interpolator="@android:anim/accelerate_interpolator"
+                android:startOffset="2000"
+                android:repeatCount="1"
+                android:repeatMode="reverse"/>
