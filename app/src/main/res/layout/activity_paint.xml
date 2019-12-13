@@ -20,7 +20,11 @@
     <!--app:layout_constraintRight_toRightOf="parent"-->
     <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
 
-    <com.wanandroid.zhangtianzhu.kotlinproject.view.MyBaseLineTextView android:layout_width="wrap_content"
-                                                                       android:layout_height="wrap_content"/>
+   <com.wanandroid.zhangtianzhu.kotlinproject.view.PaintView android:layout_width="wrap_content"
+                                                             android:layout_height="wrap_content"
+   android:id="@+id/paintView"/>
+
+    <com.wanandroid.zhangtianzhu.kotlinproject.view.ColorView android:layout_width="wrap_content"
+                                                              android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
