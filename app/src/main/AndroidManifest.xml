@@ -16,15 +16,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.PaintActivity">
+        <activity android:name=".activity.CanvasActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.XfermodeActivity">
+        </activity>
+        <activity android:name=".activity.PaintActivity">
+        </activity>
         <activity android:name=".activity.ListViewAnimActivity">
-
         </activity>
         <activity android:name=".activity.LayoutTransactionActivity">
         </activity>
