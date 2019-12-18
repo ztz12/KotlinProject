@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.ShaderActivity">
+    <!--<Button android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--android:text="带selector 的按钮"-->
+    <!--android:id="@+id/btn"-->
+    <!--android:padding="10dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@drawable/layerlist_test"/>-->
+
+    <!--<Button android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/layerlisttwo"-->
+    <!--android:padding="10dp"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/btn"-->
+    <!--android:text="selector 为根的按钮"-->
+    <!--android:layout_marginTop="20dp"/>-->
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="改变阴影半径"
+            android:id="@+id/changeRadius"/>
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/changeRadius"
+            android:text="改变阴影纵向偏移"
+            android:id="@+id/changeDy"/>
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/changeDy"
+            android:text="改变阴影横向偏移"
+            android:id="@+id/changeDx"/>
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="清除阴影"
+            app:layout_constraintTop_toBottomOf="@id/changeDx"
+            android:id="@+id/clearShader"/>
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="展示阴影"
+            app:layout_constraintTop_toBottomOf="@id/clearShader"
+            android:id="@+id/showShader"/>
+
+    <com.wanandroid.zhangtianzhu.kotlinproject.view.ShaderView android:layout_width="wrap_content"
+                                                               android:layout_height="wrap_content"
+                                                               app:layout_constraintTop_toBottomOf="@id/showShader"
+                                                               android:layout_marginTop="10dp"
+                                                               android:id="@+id/shaderView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
