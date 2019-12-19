@@ -18,6 +18,15 @@
         <!--第二层波浪的颜色-->
         <attr name="second_color" format="color"/>
     </declare-styleable>
+    
+    <declare-styleable name="ExtractAlphaView">
+        <!--src 引用图片资源-->
+        <attr name="src" format="reference"/>
+        <attr name="shaderColor" format="color"/>
+        <attr name="shaderDx" format="integer"/>
+        <attr name="shaderDy" format="integer"/>
+        <attr name="shaderRadius" format="float"/>
+    </declare-styleable>
 
 
 </resources>

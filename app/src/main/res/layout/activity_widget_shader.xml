@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.WidgetShaderActivity">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="不困于情，不乱于心，不念过去，不畏将来"
+    android:textSize="16sp"
+    android:shadowDx="10"
+    android:shadowDy="10"
+    android:shadowColor="@android:color/darker_gray"
+    android:shadowRadius="5"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="10dp"
+    android:id="@+id/tvShader"/>
+
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/tvShader"
+    android:id="@+id/et_shader"
+    android:layout_marginTop="10dp"/>
+
+    <com.wanandroid.zhangtianzhu.kotlinproject.view.BlurMaskFilterView android:layout_width="wrap_content"
+                                                                       android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/et_shader"
+    android:layout_marginTop="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

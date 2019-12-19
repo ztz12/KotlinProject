@@ -120,6 +120,7 @@ class RedPointControlVIew(context: Context, attrs: AttributeSet) : FrameLayout(c
         canvas.restore()
 
         //super 放下面，是先绘制自己，再绘制子view，否则子view会被遮住
+        //该方法是绘制所有的子控件
         super.dispatchDraw(canvas)
     }
 
@@ -129,6 +130,7 @@ class RedPointControlVIew(context: Context, attrs: AttributeSet) : FrameLayout(c
                 // 判断触摸点是否在tipImageView中
                 val rect = Rect()
                 val location = IntArray(2)
+                //获取文本的屏幕坐标
                 mTipTextView.getLocationOnScreen(location)
                 rect.left = location[0]
                 rect.top = location[1]
