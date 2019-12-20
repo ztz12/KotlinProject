@@ -26,6 +26,7 @@ public class ShimmerTextView extends AppCompatTextView {
     }
 
     private void init() {
+        //获取textView自带的画笔
         mPaint = getPaint();
     }
 
@@ -33,6 +34,7 @@ public class ShimmerTextView extends AppCompatTextView {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
 
+        //从起止位置与终止位置看出渐变运动长度为文本的两倍长度大小
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, 2 * getMeasuredWidth());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -46,6 +48,7 @@ public class ShimmerTextView extends AppCompatTextView {
         valueAnimator.setDuration(600);
         valueAnimator.start();
 
+        //getCurrentTextColor TextView自带方法获取文字颜色，初始位置为文字的左侧，填充模式使用边缘填充
         linearGradient = new LinearGradient(-getMeasuredWidth(), 0, 0, 0, new int[]{
                 getCurrentTextColor(), 0xff00ff00, getCurrentTextColor()
         }, new float[]{0f, 0.5f, 1f}, Shader.TileMode.CLAMP);
