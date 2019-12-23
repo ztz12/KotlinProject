@@ -36,9 +36,11 @@
                                                                android:layout_height="wrap_content"
                                                                app:layout_constraintTop_toBottomOf="@id/ml"
                                                                android:layout_marginTop="30dp"
-    android:background="#00ff00">
+                                                               android:background="#00ff00"
+                                                               android:id="@+id/fl">
         <TextView
                 style="@style/text_flag_01"
+                android:id="@+id/tv"
                 android:background="@color/colorPrimary"
                 android:text="Welcome"
                 android:textColor="#43BBE7"/>
@@ -80,4 +82,12 @@
                 android:textColor="#43BBE7"/>
     </com.wanandroid.zhangtianzhu.kotlinproject.view.FlowLayout>
 
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fl"
+            android:text="添加图片"
+            android:id="@+id/btnAddPic"/>
+    <com.wanandroid.zhangtianzhu.kotlinproject.view.WaterfallLayout android:layout_width="match_parent"
+                                                                    android:layout_height="wrap_content"
+                                                                    app:layout_constraintTop_toBottomOf="@id/btnAddPic"
+                                                                    android:id="@+id/waterFall"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
