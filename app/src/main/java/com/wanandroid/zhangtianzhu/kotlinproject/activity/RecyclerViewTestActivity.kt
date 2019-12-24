@@ -23,7 +23,10 @@ class RecyclerViewTestActivity : AppCompatActivity() {
         val itemDivider = DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
         rl.run {
             adapter = adapterRl
+            //LinearLayoutManager可以进行回收复用view
 //            layoutManager = LinearLayoutManager(this@RecyclerViewTestActivity)
+            //而此时CustomLayoutManager没有进行回收复用处理，不会调用 onBindViewHolder 进行回收复用view，也就是一次性创建所有的item并加入到列表中，滚动并没有调用
+            //onCreateViewHolder与onBindViewHolder进行回收复用
             layoutManager = CustomLayoutManager()
         }
 //        rl.addItemDecoration(itemDivider)
