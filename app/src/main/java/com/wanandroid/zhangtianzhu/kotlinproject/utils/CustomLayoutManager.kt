@@ -10,7 +10,7 @@ class CustomLayoutManager : RecyclerView.LayoutManager() {
     //保存所有移动的dy
     private var mSumDy = 0
     private val mItemsRect = SparseArray<Rect>()
-    //保存那些item 已经布局好了
+    //保存那些item 已经布局好了，把已经在屏幕上的item直接布局，避免先离屏，在布局，提升性能
     private val mHasAttachedItems = SparseBooleanArray()
     private var mItemWidth = 0
     private var mItemHeight = 0
@@ -148,6 +148,7 @@ class CustomLayoutManager : RecyclerView.LayoutManager() {
             val childView = getChildAt(i)
             val position = getPosition(childView!!)
             val rect = mItemsRect[position]
+            //不在当前可见区域表示被回收，设置false
             if (!Rect.intersects(visibleRect, rect)) {
                 removeAndRecycleView(childView, recycler)
                 mHasAttachedItems.put(position, false)

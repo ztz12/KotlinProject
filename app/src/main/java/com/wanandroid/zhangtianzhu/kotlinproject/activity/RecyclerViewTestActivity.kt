@@ -3,11 +3,9 @@ package com.wanandroid.zhangtianzhu.kotlinproject.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.wanandroid.zhangtianzhu.kotlinproject.R
 import com.wanandroid.zhangtianzhu.kotlinproject.adapter.RecyclerAdapter
-import com.wanandroid.zhangtianzhu.kotlinproject.utils.CustomLayoutManager
-import com.wanandroid.zhangtianzhu.kotlinproject.utils.LinearItemDecoration
+import com.wanandroid.zhangtianzhu.kotlinproject.utils.GalleryLayoutManager
 import kotlinx.android.synthetic.main.activity_recycler_view_test.*
 import java.util.ArrayList
 
@@ -27,7 +25,7 @@ class RecyclerViewTestActivity : AppCompatActivity() {
 //            layoutManager = LinearLayoutManager(this@RecyclerViewTestActivity)
             //而此时CustomLayoutManager没有进行回收复用处理，不会调用 onBindViewHolder 进行回收复用view，也就是一次性创建所有的item并加入到列表中，滚动并没有调用
             //onCreateViewHolder与onBindViewHolder进行回收复用
-            layoutManager = CustomLayoutManager()
+            layoutManager = GalleryLayoutManager()
         }
 //        rl.addItemDecoration(itemDivider)
     }
