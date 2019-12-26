@@ -26,9 +26,9 @@ class LayoutAnimActivity : AppCompatActivity() {
     private fun testLayoutAnim() {
         val mAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getData())
         lv_layout.adapter = mAdapter
-        startListAnim.setOnClickListener {
-            mAdapter.addAll(getData())
-        }
+//        startListAnim.setOnClickListener {
+//            mAdapter.addAll(getData())
+//        }
 
         //在代码中添加LayoutAnimation
         val animation = AnimationUtils.loadAnimation(this,R.anim.slide_in_left)

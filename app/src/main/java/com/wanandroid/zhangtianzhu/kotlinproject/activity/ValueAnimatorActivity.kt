@@ -17,7 +17,7 @@ class ValueAnimatorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_value_animator)
         startAnim.setOnClickListener {
-//            valueAnimator = startAnim()
+            valueAnimator = startAnim()
             myPoint.doAnimator()
         }
 

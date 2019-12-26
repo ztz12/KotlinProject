@@ -16,7 +16,7 @@ class TelescopeView(context: Context, attributeSet: AttributeSet) : View(context
 
     init {
         paint.isAntiAlias = true
-        mBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.nature)
+        mBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.iv_eye_33)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

@@ -16,7 +16,7 @@ class AvatarView(context: Context, attributeSet: AttributeSet) : View(context, a
         paint.isAntiAlias = true
         val options = BitmapFactory.Options()
         options.inSampleSize = 2
-        mBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.avator_shader, options)
+        mBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.iv_eye_3, options)
         //在初始化时创建一个BitmapShader，填充模式分别是TileMode.CLAMP、TileMode.CLAMP，其实这里填充模式没什么用，
         // 因为我们只需要显示当前图片；所以不存在多余空白区域，所以使用哪种填充模式都无所谓。
         mBitmapShader = BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)

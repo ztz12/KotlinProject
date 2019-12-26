@@ -32,7 +32,7 @@
 
                 <shape>
                     <corners android:radius="25dp"/>
-                    <solid android:color="#ffffff"/>
+                    <solid android:color="#03E0F4"/>
                 </shape>
 
             </item>

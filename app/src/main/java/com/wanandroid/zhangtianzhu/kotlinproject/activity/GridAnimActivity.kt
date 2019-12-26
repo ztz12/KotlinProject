@@ -24,9 +24,9 @@ class GridAnimActivity : AppCompatActivity() {
     }
 
     private fun testGridAnim() {
-        startGridAnim.setOnClickListener {
-            addData()
-        }
+//        startGridAnim.setOnClickListener {
+//            addData()
+//        }
         mDatas.addAll(getData())
         grid.adapter = mGrideAdapter
 

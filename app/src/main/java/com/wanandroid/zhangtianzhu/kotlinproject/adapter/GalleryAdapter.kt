@@ -17,7 +17,7 @@ class GalleryAdapter(private val mContext: Context, private val mDatas: ArrayLis
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var mCreatedHolder = 0
     private val mPics =
-        intArrayOf(R.mipmap.item1, R.mipmap.item2, R.mipmap.item3, R.mipmap.item4, R.mipmap.item5, R.mipmap.item6)
+        intArrayOf(R.drawable.iv_eye_3, R.drawable.iv_eye_4, R.drawable.iv_eye_5, R.drawable.iv_eye_6)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         mCreatedHolder++

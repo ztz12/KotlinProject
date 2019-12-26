@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.WaterFallActivity">
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="添加图片"
+            android:id="@+id/btnAddPic"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/layerlisttwo"/>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent">
+        <com.wanandroid.zhangtianzhu.kotlinproject.view.WaterfallLayout android:layout_width="match_parent"
+                                                                        android:layout_height="wrap_content"
+                                                                        android:id="@+id/waterFall"
+                                                                        android:layout_marginTop="10dp"/>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
