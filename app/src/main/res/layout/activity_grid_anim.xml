@@ -9,11 +9,12 @@
 
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="开始列表动画"
-            android:id="@+id/startGridAnim"/>
+            android:id="@+id/startGridAnim"
+            android:visibility="gone"/>
 
     <GridView
             android:id="@+id/grid"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:columnWidth="60dp"
