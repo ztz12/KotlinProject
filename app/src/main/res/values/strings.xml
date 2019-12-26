@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinProject</string>
+    <string name="app_name">CustomView</string>
     <string name="header">我是头部</string>
     <string name="normal">我是正常的item</string>
     <string name="pullRefresh">下拉刷新</string>
