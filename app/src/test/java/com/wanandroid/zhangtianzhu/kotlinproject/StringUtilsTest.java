@@ -53,5 +53,6 @@ public class StringUtilsTest {
     public void getNumFromFormatTest() {
         //断言当前值与预期值是否相等
         assertEquals(mExpert, StringUtils.getNumFromFormat(mActual));
+//        11
     }
 }
