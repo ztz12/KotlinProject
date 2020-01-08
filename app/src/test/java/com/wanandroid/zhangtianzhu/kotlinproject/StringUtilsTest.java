@@ -21,7 +21,8 @@ public class StringUtilsTest {
     /**
      * 这里模拟了创建对象的过程，Juit会自动把@Parameters里面的数据集合，
      * 按照顺序依次放入构造方法中
-      * @param mExpert
+     *
+     * @param mExpert
      * @param mActual
      */
     public StringUtilsTest(String mExpert, String mActual) {
@@ -31,11 +32,11 @@ public class StringUtilsTest {
 
     //指定测试类的测试数据集合，通过构造方法传入
     @Parameterized.Parameters
-    public static Collection<Object[]> money(){
+    public static Collection<Object[]> money() {
         return Arrays.asList(new Object[][]{
-                {"880000","88万"},
-                {"660000","66万"},
-                {"220000","22万"}
+                {"880000", "88万"},
+                {"660000", "66万"},
+                {"220000", "22万"}
         });
     }
 
@@ -53,6 +54,5 @@ public class StringUtilsTest {
     public void getNumFromFormatTest() {
         //断言当前值与预期值是否相等
         assertEquals(mExpert, StringUtils.getNumFromFormat(mActual));
-//        11
     }
 }
