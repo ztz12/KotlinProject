@@ -2,6 +2,7 @@ package com.wanandroid.zhangtianzhu.kotlinproject.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Debug
 import com.wanandroid.zhangtianzhu.kotlinproject.R
 import kotlinx.android.synthetic.main.activity_client.*
 import org.jetbrains.anko.startActivity
@@ -11,6 +12,7 @@ class ClientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client)
+        Debug.startMethodTracing("traceClient")
         startDifferentActivity()
     }
 
@@ -105,5 +107,10 @@ class ClientActivity : AppCompatActivity() {
         galleryTest.setOnClickListener {
             startActivity<GalleryActivity>()
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Debug.stopMethodTracing()
     }
 }
