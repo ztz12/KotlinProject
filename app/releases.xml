@@ -1,0 +1,13 @@
+<releases>
+  <release>
+    <versionName>1.0</versionName>
+    <versionCode>1</versionCode>
+    <versionInfo>第N+2个版本上线，一些重要的模块功能</versionInfo>
+  </release>
+
+<release>
+  <versionName>1.0</versionName>
+  <versionCode>1</versionCode>
+  <versionInfo>第N个版本上线，一些重要的模块功能</versionInfo>
+</release>
+</releases>
