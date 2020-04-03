@@ -1,2 +1,4 @@
-include ':app', ':gradleplugin'
+include ':app'
 println '初始化阶段开始执行'
+include ':gradleplugin'
+include ':asm_gradle_plugin'

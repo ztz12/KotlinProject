@@ -2,7 +2,15 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.yif.gradle.plugin</groupId>
-  <artifactId>gradleplugin</artifactId>
+  <groupId>ztz.yif.plugin</groupId>
+  <artifactId>asm_gradle_plugin</artifactId>
   <version>1.0.0</version>
+  <dependencies>
+    <dependency>
+      <groupId>com.android.tools.build</groupId>
+      <artifactId>gradle</artifactId>
+      <version>3.6.1</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
 </project>

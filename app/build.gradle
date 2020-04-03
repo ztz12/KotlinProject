@@ -8,6 +8,24 @@ apply plugin: 'kotlin-android-extensions'
 
 apply from: this.rootProject.file('releaseinfo.gradle')
 
+//自定义gradle插件properties名称
+apply plugin: 'plugin.test'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        //自定义maven地址
+        maven {
+            url uri('../plugin_repo')
+        }
+    }
+    dependencies {
+        //加载自定义插件 group+module+version
+        classpath 'ztz.yif.plugin:asm_gradle_plugin:1.0.0'
+    }
+}
+
 android {
     compileSdkVersion build_version.compileSdkVersion
     buildToolsVersion build_version.buildToolsVersion

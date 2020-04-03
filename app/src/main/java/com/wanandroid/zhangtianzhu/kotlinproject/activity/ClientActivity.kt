@@ -12,7 +12,7 @@ class ClientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client)
-        Debug.startMethodTracing("traceClient")
+//        Debug.startMethodTracing("traceClient")
         startDifferentActivity()
     }
 
@@ -111,6 +111,5 @@ class ClientActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        Debug.stopMethodTracing()
     }
 }
