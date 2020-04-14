@@ -65,7 +65,7 @@ public class PluginImplTransform extends Transform {
     @Override
     public void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation);
-        //拿到所有class 文件
+        //拿到所有class 文件 aaaa
         Collection<TransformInput> transformInputs = transformInvocation.inputs();
         transformInputs.each { TransformInput input ->
             //directoryInputs 表示以源码的方式参与项目编译所有的目录结构及其目录下的源码格式
