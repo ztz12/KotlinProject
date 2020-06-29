@@ -27,14 +27,15 @@ buildscript {
 }
 
 android {
-    compileSdkVersion build_version.compileSdkVersion
-    buildToolsVersion build_version.buildToolsVersion
+    //通过Versions 引入版本信息
+    compileSdkVersion Versions.compileSDK
+    buildToolsVersion Versions.buildToolsVersion
     defaultConfig {
         applicationId "com.wanandroid.zhangtianzhu.kotlinproject"
-        minSdkVersion build_version.minSdkVersion
-        targetSdkVersion build_version.targetSdkVersion
-        versionCode build_version.versionCode
-        versionName build_version.versionName
+        minSdkVersion Versions.minSDK
+        targetSdkVersion Versions.targetSDK
+        versionCode Versions.appVersionCode
+        versionName Versions.appVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

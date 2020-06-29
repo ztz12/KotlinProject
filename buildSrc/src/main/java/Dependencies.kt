@@ -4,6 +4,7 @@ object Versions {
     const val minSDK = 19
     const val compileSDK = 28
     const val targetSDK = 28
+    const val buildToolsVersion = "28.0.3"
 
     //App Version
     const val appVersionCode = 1
