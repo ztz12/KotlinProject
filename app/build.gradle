@@ -52,7 +52,8 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['src/main/res', 'src/main/res-add', 'src/main/res-player']//设置资源文件夹的路径为这三个
+            res.srcDirs = ['src/main/res', 'src/main/res-add', 'src/main/res-player']
+//设置资源文件夹的路径为这三个
         }
     }
 }

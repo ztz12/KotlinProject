@@ -1,5 +1,5 @@
 //统一管理项目中的版本信息
-object Versions{
+object Versions {
     //build config
     const val minSDK = 19
     const val compileSDK = 28
@@ -27,7 +27,7 @@ object Versions{
 }
 
 //统一管理项目中的使用依赖库
-object Deps{
+object Deps {
 
     //kotlin
     const val KotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
@@ -35,7 +35,8 @@ object Deps{
 
     //Support Library
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     //test
     const val junit = "junit:junit:${Versions.junit}"
