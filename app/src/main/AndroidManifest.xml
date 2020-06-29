@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="com.wanandroid.zhangtianzhu.kotlinproject">
+        xmlns:dist="http://schemas.android.com/apk/distribution"
+        package="com.wanandroid.zhangtianzhu.kotlinproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <dist:module dist:instant="true"/>
+    <dist:module dist:instant="true" />
 
     <application
             android:allowBackup="true"
@@ -15,99 +15,66 @@
             android:label="@string/app_name"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.TestWmsActivity">
+        <activity android:name=".activity.TestActionCancelActivity">
         </activity>
-        <activity android:name=".activity.MultiFingerTouchActivity">
-        </activity>
-        <activity android:name=".activity.WaterFallActivity">
-        </activity>
-        <activity android:name=".activity.BitmapAvatarActivity">
-        </activity>
+        <activity android:name=".activity.TestWmsActivity"></activity>
+        <activity android:name=".activity.MultiFingerTouchActivity"></activity>
+        <activity android:name=".activity.WaterFallActivity"></activity>
+        <activity android:name=".activity.BitmapAvatarActivity"></activity>
         <activity
                 android:name=".activity.ClientActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
                 android:name=".activity.GalleryActivity"
-                android:screenOrientation="sensorLandscape">
-        </activity>
+                android:screenOrientation="sensorLandscape"></activity>
         <activity
                 android:name=".activity.RecyclerViewTestActivity"
-                android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.SelfViewGroupActivity">
-        </activity>
-        <activity android:name=".activity.RadialGradientActivity">
-        </activity>
-        <activity android:name=".activity.LinearGradientActivity">
-        </activity>
-        <activity android:name=".activity.BitmapShaderActivity">
-        </activity>
-        <activity android:name=".activity.ExtractAlphaActivity">
-        </activity>
-        <activity android:name=".activity.WidgetShaderActivity">
-        </activity>
-        <activity android:name=".activity.ShaderActivity">
-        </activity>
-        <activity android:name=".activity.CanvasActivity">
-        </activity>
-        <activity android:name=".activity.XfermodeActivity">
-        </activity>
-        <activity android:name=".activity.PaintActivity">
-        </activity>
-        <activity android:name=".activity.ListViewAnimActivity">
-        </activity>
-        <activity android:name=".activity.LayoutTransactionActivity">
-        </activity>
-        <activity android:name=".activity.GridAnimActivity">
-        </activity>
-        <activity android:name=".activity.LayoutAnimActivity">
-        </activity>
-        <activity android:name=".activity.AnimatorXMLMenuActivity">
-        </activity>
-        <activity android:name=".activity.AnimatorXMLActivity">
-        </activity>
-        <activity android:name=".activity.PlayAnimatorActivity">
-        </activity>
-        <activity android:name=".activity.PropertyValuesHolderActivity">
-        </activity>
+                android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.SelfViewGroupActivity"></activity>
+        <activity android:name=".activity.RadialGradientActivity"></activity>
+        <activity android:name=".activity.LinearGradientActivity"></activity>
+        <activity android:name=".activity.BitmapShaderActivity"></activity>
+        <activity android:name=".activity.ExtractAlphaActivity"></activity>
+        <activity android:name=".activity.WidgetShaderActivity"></activity>
+        <activity android:name=".activity.ShaderActivity"></activity>
+        <activity android:name=".activity.CanvasActivity"></activity>
+        <activity android:name=".activity.XfermodeActivity"></activity>
+        <activity android:name=".activity.PaintActivity"></activity>
+        <activity android:name=".activity.ListViewAnimActivity"></activity>
+        <activity android:name=".activity.LayoutTransactionActivity"></activity>
+        <activity android:name=".activity.GridAnimActivity"></activity>
+        <activity android:name=".activity.LayoutAnimActivity"></activity>
+        <activity android:name=".activity.AnimatorXMLMenuActivity"></activity>
+        <activity android:name=".activity.AnimatorXMLActivity"></activity>
+        <activity android:name=".activity.PlayAnimatorActivity"></activity>
+        <activity android:name=".activity.PropertyValuesHolderActivity"></activity>
         <activity
                 android:name=".activity.ObjectAnimatorActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:screenOrientation="portrait"></activity>
         <activity
                 android:name=".activity.ValueAnimatorActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:screenOrientation="portrait"></activity>
         <activity
                 android:name=".activity.CircleWaveProgressActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:screenOrientation="portrait"></activity>
         <activity
                 android:name=".activity.WaveActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:screenOrientation="portrait"></activity>
         <activity
                 android:name=".activity.TestViewGroupActivity"
-                android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.ConstraintLayoutActivity">
-        </activity>
-        <activity android:name=".activity.MediaVideoActivity">
-        </activity>
-        <activity android:name=".activity.VideoViewActivity">
-        </activity>
-        <activity android:name=".activity.ArrowRefreshHeaderActivity">
-        </activity>
-        <activity android:name=".activity.SwipeRefreshActivity">
-        </activity>
-        <activity android:name=".activity.MainActivity">
-        </activity>
+                android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ConstraintLayoutActivity"></activity>
+        <activity android:name=".activity.MediaVideoActivity"></activity>
+        <activity android:name=".activity.VideoViewActivity"></activity>
+        <activity android:name=".activity.ArrowRefreshHeaderActivity"></activity>
+        <activity android:name=".activity.SwipeRefreshActivity"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
     </application>
 
 </manifest>

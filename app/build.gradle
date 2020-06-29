@@ -67,10 +67,11 @@ this.android.sourceSets {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation supportDeps.appcompat
+    //通过buildSrc中的Deps 进行添加依赖
+    implementation Deps.KotlinLib
+    implementation Deps.appcompat
     implementation supportDeps.core_ktx
-    implementation supportDeps.constraintlayout
+    implementation Deps.constraintLayout
     implementation supportDeps.cardview
     implementation supportDeps.design
     implementation supportDeps.recyclerview
@@ -79,9 +80,9 @@ dependencies {
     implementation commonDeps.anko
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation testDeps.junit
-    androidTestImplementation testDeps.runner
-    androidTestImplementation testDeps.expresso_core
+    testImplementation Deps.junit
+    androidTestImplementation Deps.runner
+    androidTestImplementation Deps.espressoCore
 }
 
 this.getParentProject()
